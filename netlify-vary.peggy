@@ -46,9 +46,9 @@ token
 pchar
   = unreserved
   / pct_encoded
-  / sub_delims
   / ":"
   / "@"
+  / "*"
 
 iso_639_code
   = "ab"i
@@ -518,19 +518,6 @@ unreserved
 
 pct_encoded
   = "%" HEXDIG HEXDIG
-
-sub_delims
-  = "!"
-  / "$"
-  / "&"
-  / "'"
-  / "("
-  / ")"
-  / "*"
-  / "+"
-  / ","
-  / ";"
-  / "="
 
 DIGIT
   = [\x30-\x39]

@@ -513,13 +513,12 @@ function peg$parse(input, options) {
 
   var peg$r0 = /^[\t ]/;
   var peg$r1 = /^[\/?]/;
-  var peg$r2 = /^[!$&-,:-;=@]/;
+  var peg$r2 = /^[*:@]/;
   var peg$r3 = /^[!#-'*-+\--.0-9A-Z\^-z|~]/;
   var peg$r4 = /^[\--.0-9A-Z_a-z~]/;
-  var peg$r5 = /^[!$&-,;=]/;
-  var peg$r6 = /^[0-9]/;
-  var peg$r7 = /^[A-Za-z]/;
-  var peg$r8 = /^[A-F]/i;
+  var peg$r5 = /^[0-9]/;
+  var peg$r6 = /^[A-Za-z]/;
+  var peg$r7 = /^[A-F]/i;
 
   var peg$e0 = peg$literalExpectation(",", false);
   var peg$e1 = peg$literalExpectation("header=", false);
@@ -534,7 +533,7 @@ function peg$parse(input, options) {
   var peg$e10 = peg$literalExpectation("+", false);
   var peg$e11 = peg$literalExpectation(" ", false);
   var peg$e12 = peg$literalExpectation("\t", false);
-  var peg$e13 = peg$classExpectation(["!", "$", ["&", ","], [":", ";"], "=", "@"], false, false);
+  var peg$e13 = peg$classExpectation(["*", ":", "@"], false, false);
   var peg$e14 = peg$literalExpectation("ab", true);
   var peg$e15 = peg$literalExpectation("aa", true);
   var peg$e16 = peg$literalExpectation("af", true);
@@ -971,10 +970,9 @@ function peg$parse(input, options) {
   var peg$e447 = peg$classExpectation(["!", ["#", "'"], ["*", "+"], ["-", "."], ["0", "9"], ["A", "Z"], ["^", "z"], "|", "~"], false, false);
   var peg$e448 = peg$classExpectation([["-", "."], ["0", "9"], ["A", "Z"], "_", ["a", "z"], "~"], false, false);
   var peg$e449 = peg$literalExpectation("%", false);
-  var peg$e450 = peg$classExpectation(["!", "$", ["&", ","], ";", "="], false, false);
-  var peg$e451 = peg$classExpectation([["0", "9"]], false, false);
-  var peg$e452 = peg$classExpectation([["A", "Z"], ["a", "z"]], false, false);
-  var peg$e453 = peg$classExpectation([["A", "F"]], false, true);
+  var peg$e450 = peg$classExpectation([["0", "9"]], false, false);
+  var peg$e451 = peg$classExpectation([["A", "Z"], ["a", "z"]], false, false);
+  var peg$e452 = peg$classExpectation([["A", "F"]], false, true);
 
   var peg$currPos = options.peg$currPos | 0;
   var peg$savedPos = peg$currPos;
@@ -5888,7 +5886,7 @@ function peg$parse(input, options) {
     return s0;
   }
 
-  function peg$parsesub_delims() {
+  function peg$parseDIGIT() {
     var s0;
 
     s0 = input.charAt(peg$currPos);
@@ -5902,7 +5900,7 @@ function peg$parse(input, options) {
     return s0;
   }
 
-  function peg$parseDIGIT() {
+  function peg$parseALPHA() {
     var s0;
 
     s0 = input.charAt(peg$currPos);
@@ -5916,31 +5914,17 @@ function peg$parse(input, options) {
     return s0;
   }
 
-  function peg$parseALPHA() {
-    var s0;
-
-    s0 = input.charAt(peg$currPos);
-    if (peg$r7.test(s0)) {
-      peg$currPos++;
-    } else {
-      s0 = peg$FAILED;
-      if (peg$silentFails === 0) { peg$fail(peg$e452); }
-    }
-
-    return s0;
-  }
-
   function peg$parseHEXDIG() {
     var s0;
 
     s0 = peg$parseDIGIT();
     if (s0 === peg$FAILED) {
       s0 = input.charAt(peg$currPos);
-      if (peg$r8.test(s0)) {
+      if (peg$r7.test(s0)) {
         peg$currPos++;
       } else {
         s0 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$e453); }
+        if (peg$silentFails === 0) { peg$fail(peg$e452); }
       }
     }
 
