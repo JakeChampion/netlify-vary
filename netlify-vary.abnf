@@ -6,7 +6,7 @@ cookie-directives = %s"cookie=" ( cookie-name ) *( OWS "|" OWS ( cookie-name ) )
 
 language-directives = %s"language=" ( combo-iso-639-code ) *( OWS "|" OWS ( combo-iso-639-code ) )
 
-country-directives = %s"country=" ( combo-iso-639-code ) *( OWS "|" OWS ( combo-iso-639-code ) )
+country-directives = %s"country=" ( combo-iso-3166-1-code ) *( OWS "|" OWS ( combo-iso-3166-1-code ) )
 
 query-directives = %s"query" [ "=" ( query ) *( OWS "|" OWS ( query ) ) ]
 
