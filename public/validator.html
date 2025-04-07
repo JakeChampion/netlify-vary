@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+<style>
+    code {
+        text-wrap: wrap;
+    }
+</style>
+<form action="/.netlify/functions/validator" id="validator-form">
+	<label for="netlify-vary">
+		<strong>Netlify-Vary:</strong>
+		<input type="text" name="netlify_vary" id="netlify-vary">
+	</label>
+
+	<input type="submit" value="Validate">
+
+    <output>
+        <pre><code></code></pre>
+    </output>
+</form>
+
+<script>
+async function postFormDataAsJson({ url, formData }) {
+	const plainFormData = Object.fromEntries(formData.entries());
+	const formDataJsonString = JSON.stringify(plainFormData);
+
+	const fetchOptions = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		},
+		body: formDataJsonString,
+	};
+
+	const response = await fetch(url, fetchOptions);
+
+	if (!response.ok) {
+		const errorMessage = await response.text();
+		throw new Error(errorMessage);
+	}
+
+	return response.json();
+}
+
+const output = document.querySelector('output pre code')
+
+async function handleFormSubmit(event) {
+	event.preventDefault();
+
+	const form = event.currentTarget;
+	const url = form.action;
+
+	try {
+		const formData = new FormData(form);
+		const responseData = await postFormDataAsJson({ url, formData });
+        console.log({responseData})
+
+        output.innerText = JSON.stringify(responseData, null, 4 )
+	} catch (error) {
+		output.innerText = error.message;
+	}
+}
+
+document.getElementById("validator-form")?.addEventListener("submit", handleFormSubmit);
+</script>

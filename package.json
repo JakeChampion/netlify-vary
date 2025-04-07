@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "abnf": "^4.3.1"
+  },
+  "scripts": {
+    "check": "abnf_check netlify-vary.abnf",
+    "build": "npm run check && npm run readme && npm run html && npm run parser",
+    "prereadme": "echo -n 'spec and tests for netlify-vary\n\ngenerate the html file from the abnf definition like so:\n`kgt -l abnf -e html5 < netlify-vary.abnf > public/index.html`\n\n```' > readme.md",
+    "readme": "kgt -l abnf -e rrutf8 < netlify-vary.abnf >> readme.md",
+    "postreadme": "echo '```' >> readme.md",
+    "html": "kgt -l abnf -e html5 < netlify-vary.abnf > public/index.html",
+    "parser": "abnf_gen netlify-vary.abnf && peggy --format es --dts netlify-vary.peggy"
+  }
+}
