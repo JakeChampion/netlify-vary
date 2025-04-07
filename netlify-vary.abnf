@@ -1,4 +1,4 @@
-Netlify-Vary = ( ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) *( OWS "," OWS [ header-directives / query-directives / cookie-directives / language-directives / country-directives ] ) )
+Netlify-Vary = ( ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) *( OWS "," OWS ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) ) )
 
 header-directives = %s"header=" ( field-name ) *( OWS "|" OWS ( field-name ) )
 

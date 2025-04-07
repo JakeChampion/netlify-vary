@@ -1,5 +1,5 @@
 Netlify_Vary
-  = ((header_directives / query_directives / cookie_directives / language_directives / country_directives) (OWS "," OWS (header_directives / query_directives / cookie_directives / language_directives / country_directives)?)*)
+  = ((header_directives / query_directives / cookie_directives / language_directives / country_directives) (OWS "," OWS (header_directives / query_directives / cookie_directives / language_directives / country_directives))*)
 
 header_directives
   = "header=" (field_name) (OWS "|" OWS (field_name))*

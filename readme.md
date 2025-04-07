@@ -5,21 +5,17 @@ generate the html file from the abnf definition like so:
 
 ```
 Netlify-Vary:
-    │├──╮─── header-directives ───╭──╮──────────────────────────────────────────────────────────╭──┤│
-        │                         │  │                                                          │
-        ╰─── query-directives ────╯  │  ╭─────────────────────────<──────────────────────────╮  │
-        │                         │  │  │                                                    │  │
-        ╰─── cookie-directives ───╯  │  │                       ╭────────────>────────────╮  │  │
-        │                         │  │  │                       │                         │  │  │
-        ╰── language-directives ──╯  ╰──╰── OWS ── "," ── OWS ──┼─── header-directives ───┼──╯──╯
-        │                         │                             │                         │
-        ╰── country-directives ───╯                             ╰─── query-directives ────╯
-                                                                │                         │
-                                                                ╰─── cookie-directives ───╯
-                                                                │                         │
-                                                                ╰── language-directives ──╯
-                                                                │                         │
-                                                                ╰── country-directives ───╯
+        ╭────── OWS ── "," ── OWS ──────╮
+        │                               │
+    │├──╰──╮─── header-directives ───╭──╯──┤│
+           │                         │
+           ╰─── query-directives ────╯
+           │                         │
+           ╰─── cookie-directives ───╯
+           │                         │
+           ╰── language-directives ──╯
+           │                         │
+           ╰── country-directives ───╯
 
 header-directives:
     │├── "header=" ──╭───── field-name ──────╮──┤│
