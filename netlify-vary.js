@@ -1179,13 +1179,11 @@ function peg$parse(input, options) {
             }
           }
         }
-        if (s7 !== peg$FAILED) {
-          s4 = [s4, s5, s6, s7];
-          s3 = s4;
-        } else {
-          peg$currPos = s3;
-          s3 = peg$FAILED;
+        if (s7 === peg$FAILED) {
+          s7 = null;
         }
+        s4 = [s4, s5, s6, s7];
+        s3 = s4;
       } else {
         peg$currPos = s3;
         s3 = peg$FAILED;
@@ -1216,13 +1214,11 @@ function peg$parse(input, options) {
               }
             }
           }
-          if (s7 !== peg$FAILED) {
-            s4 = [s4, s5, s6, s7];
-            s3 = s4;
-          } else {
-            peg$currPos = s3;
-            s3 = peg$FAILED;
+          if (s7 === peg$FAILED) {
+            s7 = null;
           }
+          s4 = [s4, s5, s6, s7];
+          s3 = s4;
         } else {
           peg$currPos = s3;
           s3 = peg$FAILED;
