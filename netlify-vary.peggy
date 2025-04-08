@@ -2,19 +2,19 @@ Netlify_Vary
   = ((header_directives / query_directives / cookie_directives / language_directives / country_directives) (OWS "," OWS (header_directives / query_directives / cookie_directives / language_directives / country_directives)?)*)
 
 header_directives
-  = "header=" (field_name) (OWS "|" OWS (field_name))*
+  = "header=" (OWS field_name) (OWS "|" OWS (field_name))*
 
 query_directives
-  = "query" ("=" (query) (OWS "|" OWS (query))*)?
+  = "query" ("=" OWS (query) (OWS "|" OWS (query))*)?
 
 cookie_directives
-  = "cookie=" (cookie_name) (OWS "|" OWS (cookie_name))*
+  = "cookie=" (OWS cookie_name) (OWS "|" OWS (cookie_name))*
 
 language_directives
-  = "language=" (combo_language_range) (OWS "|" OWS (combo_language_range))*
+  = "language=" (OWS combo_language_range) (OWS "|" OWS (combo_language_range))*
 
 country_directives
-  = "country=" (combo_iso_3166_1_code) (OWS "|" OWS (combo_iso_3166_1_code))*
+  = "country=" (OWS combo_iso_3166_1_code) (OWS "|" OWS (combo_iso_3166_1_code))*
 
 OWS
   = (SP / HTAB)*

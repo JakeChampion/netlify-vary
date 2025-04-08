@@ -1,14 +1,14 @@
 Netlify-Vary = ( ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) *( OWS "," OWS [ header-directives / query-directives / cookie-directives / language-directives / country-directives ] ) )
 
-header-directives = %s"header=" ( field-name ) *( OWS "|" OWS ( field-name ) )
+header-directives = %s"header=" ( OWS field-name ) *( OWS "|" OWS ( field-name ) )
 
-cookie-directives = %s"cookie=" ( cookie-name ) *( OWS "|" OWS ( cookie-name ) )
+cookie-directives = %s"cookie=" ( OWS cookie-name ) *( OWS "|" OWS ( cookie-name ) )
 
-language-directives = %s"language=" ( combo-language-range ) *( OWS "|" OWS ( combo-language-range ) )
+language-directives = %s"language=" ( OWS combo-language-range ) *( OWS "|" OWS ( combo-language-range ) )
 
-country-directives = %s"country=" ( combo-iso-3166-1-code ) *( OWS "|" OWS ( combo-iso-3166-1-code ) )
+country-directives = %s"country=" ( OWS combo-iso-3166-1-code ) *( OWS "|" OWS ( combo-iso-3166-1-code ) )
 
-query-directives = %s"query" [ "=" ( query ) *( OWS "|" OWS ( query ) ) ]
+query-directives = %s"query" [ "=" OWS ( query ) *( OWS "|" OWS ( query ) ) ]
 
 combo-language-range = language-range *( OWS "+" OWS ( language-range) )
 
