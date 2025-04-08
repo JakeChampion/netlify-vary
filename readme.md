@@ -5,58 +5,54 @@ generate the html file from the abnf definition like so:
 
 ```
 Netlify-Vary:
-    │├──╮─── header-directives ───╭──╮──────────────────────────────────────────────────────────╭──┤│
-        │                         │  │                                                          │
-        ╰─── query-directives ────╯  │  ╭─────────────────────────<──────────────────────────╮  │
-        │                         │  │  │                                                    │  │
-        ╰─── cookie-directives ───╯  │  │                       ╭────────────>────────────╮  │  │
-        │                         │  │  │                       │                         │  │  │
-        ╰── language-directives ──╯  ╰──╰── OWS ── "," ── OWS ──┼─── header-directives ───┼──╯──╯
-        │                         │                             │                         │
-        ╰── country-directives ───╯                             ╰─── query-directives ────╯
-                                                                │                         │
-                                                                ╰─── cookie-directives ───╯
-                                                                │                         │
-                                                                ╰── language-directives ──╯
-                                                                │                         │
-                                                                ╰── country-directives ───╯
+        ╭───────────── "," ─────────────╮
+        │                               │
+    │├──╰──╮─── header-directives ───╭──╯──┤│
+           │                         │
+           ╰─── query-directives ────╯
+           │                         │
+           ╰─── cookie-directives ───╯
+           │                         │
+           ╰── language-directives ──╯
+           │                         │
+           ╰── country-directives ───╯
 
 header-directives:
-    │├── "header=" ──╭───── field-name ──────╮──┤│
-                     │                       │
-                     ╰── OWS ── "|" ── OWS ──╯
+    │├── "header=" ──╭── field-name ──╮──┤│
+                     │                │
+                     ╰───── "|" ──────╯
 
 cookie-directives:
-    │├── "cookie=" ──╭───── cookie-name ─────╮──┤│
-                     │                       │
-                     ╰── OWS ── "|" ── OWS ──╯
+    │├── "cookie=" ──╭── cookie-name ──╮──┤│
+                     │                 │
+                     ╰────── "|" ──────╯
 
 language-directives:
     │├── "language=" ──╭── combo-iso-639-code ──╮──┤│
                        │                        │
-                       ╰── OWS ── "|" ── OWS ───╯
+                       ╰───────── "|" ──────────╯
 
 country-directives:
     │├── "country=" ──╭── combo-iso-3166-1-code ──╮──┤│
                       │                           │
-                      ╰──── OWS ── "|" ── OWS ────╯
+                      ╰─────────── "|" ───────────╯
 
 query-directives:
-                   ╭─────────────────>──────────────────╮
-                   │                                    │
-    │├── "query" ──╯── "=" ──╭──────── query ────────╮──╰──┤│
-                             │                       │
-                             ╰── OWS ── "|" ── OWS ──╯
+                   ╭───────────>────────────╮
+                   │                        │
+    │├── "query" ──╯── "=" ──╭── query ──╮──╰──┤│
+                             │           │
+                             ╰─── "|" ───╯
 
 combo-iso-639-code:
-    │├──╭──── iso-639-code ─────╮──┤│
-        │                       │
-        ╰── OWS ── "+" ── OWS ──╯
+    │├──╭── iso-639-code ──╮──┤│
+        │                  │
+        ╰────── "+" ───────╯
 
 combo-iso-3166-1-code:
-    │├──╭─── iso-3166-1-code ───╮──┤│
-        │                       │
-        ╰── OWS ── "+" ── OWS ──╯
+    │├──╭── iso-3166-1-code ──╮──┤│
+        │                     │
+        ╰──────── "+" ────────╯
 
 cookie-name:
     │├── token ──┤│
@@ -93,13 +89,6 @@ pct-encoded:
 
 field-name:
     │├── token ──┤│
-
-OWS:
-    │├──╭────────────────╮──┤│
-        │                │
-        ╰──╮─── SP ───╭──╯
-           │          │
-           ╰── HTAB ──╯
 
 tchar:
     │├──╮─── "!" ───╭──┤│
@@ -1028,12 +1017,6 @@ DIGIT:
         │    :    │
         │         │
         ╰── "9" ──╯
-
-SP:
-    │├── " " ──┤│
-
-HTAB:
-    │├── "\t" ──┤│
 
 HEXDIG:
     │├──╮── DIGIT ──╭──┤│
