@@ -1,18 +1,18 @@
-Netlify-Vary = ( ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) *( OWS "," OWS [ header-directives / query-directives / cookie-directives / language-directives / country-directives ] ) )
+Netlify-Vary = ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) *( "," ( header-directives / query-directives / cookie-directives / language-directives / country-directives ) )
 
-header-directives = %s"header=" ( field-name ) *( OWS "|" OWS ( field-name ) )
+header-directives = %s"header=" ( field-name ) *( "|" ( field-name ) )
 
-cookie-directives = %s"cookie=" ( cookie-name ) *( OWS "|" OWS ( cookie-name ) )
+cookie-directives = %s"cookie=" ( cookie-name ) *( "|" ( cookie-name ) )
 
-language-directives = %s"language=" ( combo-iso-639-code ) *( OWS "|" OWS ( combo-iso-639-code ) )
+language-directives = %s"language=" ( combo-iso-639-code ) *( "|" ( combo-iso-639-code ) )
 
-country-directives = %s"country=" ( combo-iso-3166-1-code ) *( OWS "|" OWS ( combo-iso-3166-1-code ) )
+country-directives = %s"country=" ( combo-iso-3166-1-code ) *( "|" ( combo-iso-3166-1-code ) )
 
-query-directives = %s"query" [ "=" ( query ) *( OWS "|" OWS ( query ) ) ]
+query-directives = %s"query" [ "=" ( query ) *( "|" ( query ) ) ]
 
-combo-iso-639-code = iso-639-code *( OWS "+" OWS ( iso-639-code) )
+combo-iso-639-code = iso-639-code *( "+" ( iso-639-code) )
 
-combo-iso-3166-1-code = ( iso-3166-1-code *( OWS "+" OWS ( iso-3166-1-code) ) )
+combo-iso-3166-1-code = ( iso-3166-1-code *( "+" ( iso-3166-1-code) ) )
 
 cookie-name = token
 
@@ -26,8 +26,6 @@ pct-encoded = "%" HEXDIG HEXDIG
 
 field-name = token
 
-OWS = *( SP / HTAB )
-
 tchar = "!" / "#" / "$" / "%" / "&" / "'" / "*" / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~" / DIGIT / ALPHA
 
 token = 1*tchar
@@ -39,9 +37,5 @@ iso-3166-1-code = "AD" / "AE" / "AF" / "AG" / "AI" / "AL" / "AM" / "AO" / "AQ" /
 ALPHA = %x41-5A / %x61-7A
 
 DIGIT = %x30-39
-
-SP = %x20
-
-HTAB = %x09
 
 HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"

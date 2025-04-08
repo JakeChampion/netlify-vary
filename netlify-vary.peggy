@@ -1,23 +1,20 @@
 Netlify_Vary
-  = ((header_directives / query_directives / cookie_directives / language_directives / country_directives) (OWS "," OWS (header_directives / query_directives / cookie_directives / language_directives / country_directives)?)*)
+  = (header_directives / query_directives / cookie_directives / language_directives / country_directives) ("," (header_directives / query_directives / cookie_directives / language_directives / country_directives))*
 
 header_directives
-  = "header=" (field_name) (OWS "|" OWS (field_name))*
+  = "header=" (field_name) ("|" (field_name))*
 
 query_directives
-  = "query" ("=" (query) (OWS "|" OWS (query))*)?
+  = "query" ("=" (query) ("|" (query))*)?
 
 cookie_directives
-  = "cookie=" (cookie_name) (OWS "|" OWS (cookie_name))*
+  = "cookie=" (cookie_name) ("|" (cookie_name))*
 
 language_directives
-  = "language=" (combo_iso_639_code) (OWS "|" OWS (combo_iso_639_code))*
+  = "language=" (combo_iso_639_code) ("|" (combo_iso_639_code))*
 
 country_directives
-  = "country=" (combo_iso_3166_1_code) (OWS "|" OWS (combo_iso_3166_1_code))*
-
-OWS
-  = (SP / HTAB)*
+  = "country=" (combo_iso_3166_1_code) ("|" (combo_iso_3166_1_code))*
 
 field_name
   = token
@@ -29,16 +26,10 @@ cookie_name
   = token
 
 combo_iso_639_code
-  = iso_639_code (OWS "+" OWS (iso_639_code))*
+  = iso_639_code ("+" (iso_639_code))*
 
 combo_iso_3166_1_code
-  = (iso_3166_1_code (OWS "+" OWS (iso_3166_1_code))*)
-
-SP
-  = " "
-
-HTAB
-  = "\t"
+  = (iso_3166_1_code ("+" (iso_3166_1_code))*)
 
 token
   = tchar+
