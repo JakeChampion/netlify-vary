@@ -4,13 +4,13 @@ header-directives = %s"header=" ( field-name ) *( OWS "|" OWS ( field-name ) )
 
 cookie-directives = %s"cookie=" ( cookie-name ) *( OWS "|" OWS ( cookie-name ) )
 
-language-directives = %s"language=" ( combo-iso-639-code ) *( OWS "|" OWS ( combo-iso-639-code ) )
+language-directives = %s"language=" ( combo-language-range ) *( OWS "|" OWS ( combo-language-range ) )
 
 country-directives = %s"country=" ( combo-iso-3166-1-code ) *( OWS "|" OWS ( combo-iso-3166-1-code ) )
 
 query-directives = %s"query" [ "=" ( query ) *( OWS "|" OWS ( query ) ) ]
 
-combo-iso-639-code = iso-639-code *( OWS "+" OWS ( iso-639-code) )
+combo-language-range = language-range *( OWS "+" OWS ( language-range) )
 
 combo-iso-3166-1-code = ( iso-3166-1-code *( OWS "+" OWS ( iso-3166-1-code) ) )
 
@@ -32,7 +32,9 @@ tchar = "!" / "#" / "$" / "%" / "&" / "'" / "*" / "+" / "-" / "." / "^" / "_" / 
 
 token = 1*tchar
 
-iso-639-code = "ab" / "aa" / "af" / "ak" / "sq" / "am" / "ar" / "an" / "hy" / "as" / "av" / "ae" / "ay" / "az" / "bm" / "ba" / "eu" / "be" / "bn" / "bi" / "bs" / "br" / "bg" / "my" / "ca" / "ch" / "ce" / "ny" / "zh" / "cu" / "cv" / "kw" / "co" / "cr" / "hr" / "cs" / "da" / "dv" / "nl" / "dz" / "en" / "eo" / "et" / "ee" / "fo" / "fj" / "fi" / "fr" / "fy" / "ff" / "gd" / "gl" / "lg" / "ka" / "de" / "el" / "kl" / "gn" / "gu" / "ht" / "ha" / "he" / "hz" / "hi" / "ho" / "hu" / "is" / "io" / "ig" / "id" / "ia" / "ie" / "iu" / "ik" / "ga" / "it" / "ja" / "jv" / "kn" / "kr" / "ks" / "kk" / "km" / "ki" / "rw" / "ky" / "kv" / "kg" / "ko" / "kj" / "ku" / "lo" / "la" / "lv" / "li" / "ln" / "lt" / "lu" / "lb" / "mk" / "mg" / "ms" / "ml" / "mt" / "gv" / "mi" / "mr" / "mh" / "mn" / "na" / "nv" / "nd" / "nr" / "ng" / "ne" / "no" / "nb" / "nn" / "oc" / "oj" / "or" / "om" / "os" / "pi" / "ps" / "fa" / "pl" / "pt" / "pa" / "qu" / "ro" / "rm" / "rn" / "ru" / "se" / "sm" / "sg" / "sa" / "sc" / "sr" / "sn" / "sd" / "si" / "sk" / "sl" / "so" / "st" / "es" / "su" / "sw" / "ss" / "sv" / "tl" / "ty" / "tg" / "ta" / "tt" / "te" / "th" / "bo" / "ti" / "to" / "ts" / "tn" / "tr" / "tk" / "tw" / "ug" / "uk" / "ur" / "uz" / "ve" / "vi" / "vo" / "wa" / "cy" / "wo" / "xh" / "ii" / "yi" / "yo" / "za" / "zu"
+language-range   = (1*8ALPHA *("-" 1*8alphanum)) / "*"
+
+alphanum = ALPHA / DIGIT
 
 iso-3166-1-code = "AD" / "AE" / "AF" / "AG" / "AI" / "AL" / "AM" / "AO" / "AQ" / "AR" / "AS" / "AT" / "AU" / "AW" / "AX" / "AZ" / "BA" / "BB" / "BD" / "BE" / "BF" / "BG" / "BH" / "BI" / "BJ" / "BL" / "BM" / "BN" / "BO" / "BQ" / "BR" / "BS" / "BT" / "BV" / "BW" / "BY" / "BZ" / "CA" / "CC" / "CD" / "CF" / "CG" / "CH" / "CI" / "CK" / "CL" / "CM" / "CN" / "CO" / "CR" / "CU" / "CV" / "CW" / "CX" / "CY" / "CZ" / "DE" / "DJ" / "DK" / "DM" / "DO" / "DZ" / "EC" / "EE" / "EG" / "EH" / "ER" / "ES" / "ET" / "FI" / "FJ" / "FK" / "FM" / "FO" / "FR" / "GA" / "GB" / "UK" / "GD" / "GE" / "GF" / "GG" / "GH" / "GI" / "GL" / "GM" / "GN" / "GP" / "GQ" / "GR" / "GS" / "GT" / "GU" / "GW" / "GY" / "HK" / "HM" / "HN" / "HR" / "HT" / "HU" / "ID" / "IE" / "IL" / "IM" / "IN" / "IO" / "IQ" / "IR" / "IS" / "IT" / "JE" / "JM" / "JO" / "JP" / "KE" / "KG" / "KH" / "KI" / "KM" / "KN" / "KP" / "KR" / "KW" / "KY" / "KZ" / "LA" / "LB" / "LC" / "LI" / "LK" / "LR" / "LS" / "LT" / "LU" / "LV" / "LY" / "MA" / "MC" / "MD" / "ME" / "MF" / "SX" / "MG" / "MH" / "MK" / "ML" / "MM" / "MN" / "MO" / "MP" / "MQ" / "MR" / "MS" / "MT" / "MU" / "MV" / "MW" / "MX" / "MY" / "MZ" / "NA" / "NC" / "NE" / "NF" / "NG" / "NI" / "NL" / "NO" / "NP" / "NR" / "NU" / "NZ" / "OM" / "PA" / "PE" / "PF" / "PG" / "PH" / "PK" / "PL" / "PM" / "PN" / "PR" / "PS" / "PT" / "PW" / "PY" / "QA" / "RE" / "RO" / "RS" / "RU" / "RW" / "SA" / "SB" / "SC" / "SD" / "SE" / "SG" / "SH" / "SI" / "SJ" / "SK" / "SL" / "SM" / "SN" / "SO" / "SR" / "SS" / "ST" / "SV" / "SX" / "MF" / "SY" / "SZ" / "TC" / "TD" / "TF" / "TG" / "TH" / "TJ" / "TK" / "TL" / "TM" / "TN" / "TO" / "TR" / "TT" / "TV" / "TW" / "TZ" / "UA" / "UG" / "UM" / "US" / "UY" / "UZ" / "VA" / "VC" / "VE" / "VG" / "VI" / "VN" / "VU" / "WF" / "WS" / "YE" / "YT" / "ZA" / "ZM" / "ZW"
 

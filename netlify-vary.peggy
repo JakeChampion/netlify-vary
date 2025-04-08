@@ -11,7 +11,7 @@ cookie_directives
   = "cookie=" (cookie_name) (OWS "|" OWS (cookie_name))*
 
 language_directives
-  = "language=" (combo_iso_639_code) (OWS "|" OWS (combo_iso_639_code))*
+  = "language=" (combo_language_range) (OWS "|" OWS (combo_language_range))*
 
 country_directives
   = "country=" (combo_iso_3166_1_code) (OWS "|" OWS (combo_iso_3166_1_code))*
@@ -28,8 +28,8 @@ query
 cookie_name
   = token
 
-combo_iso_639_code
-  = iso_639_code (OWS "+" OWS (iso_639_code))*
+combo_language_range
+  = language_range (OWS "+" OWS (language_range))*
 
 combo_iso_3166_1_code
   = (iso_3166_1_code (OWS "+" OWS (iso_3166_1_code))*)
@@ -48,190 +48,9 @@ pchar
   / pct_encoded
   / "*"
 
-iso_639_code
-  = "ab"i
-  / "aa"i
-  / "af"i
-  / "ak"i
-  / "sq"i
-  / "am"i
-  / "ar"i
-  / "an"i
-  / "hy"i
-  / "as"i
-  / "av"i
-  / "ae"i
-  / "ay"i
-  / "az"i
-  / "bm"i
-  / "ba"i
-  / "eu"i
-  / "be"i
-  / "bn"i
-  / "bi"i
-  / "bs"i
-  / "br"i
-  / "bg"i
-  / "my"i
-  / "ca"i
-  / "ch"i
-  / "ce"i
-  / "ny"i
-  / "zh"i
-  / "cu"i
-  / "cv"i
-  / "kw"i
-  / "co"i
-  / "cr"i
-  / "hr"i
-  / "cs"i
-  / "da"i
-  / "dv"i
-  / "nl"i
-  / "dz"i
-  / "en"i
-  / "eo"i
-  / "et"i
-  / "ee"i
-  / "fo"i
-  / "fj"i
-  / "fi"i
-  / "fr"i
-  / "fy"i
-  / "ff"i
-  / "gd"i
-  / "gl"i
-  / "lg"i
-  / "ka"i
-  / "de"i
-  / "el"i
-  / "kl"i
-  / "gn"i
-  / "gu"i
-  / "ht"i
-  / "ha"i
-  / "he"i
-  / "hz"i
-  / "hi"i
-  / "ho"i
-  / "hu"i
-  / "is"i
-  / "io"i
-  / "ig"i
-  / "id"i
-  / "ia"i
-  / "ie"i
-  / "iu"i
-  / "ik"i
-  / "ga"i
-  / "it"i
-  / "ja"i
-  / "jv"i
-  / "kn"i
-  / "kr"i
-  / "ks"i
-  / "kk"i
-  / "km"i
-  / "ki"i
-  / "rw"i
-  / "ky"i
-  / "kv"i
-  / "kg"i
-  / "ko"i
-  / "kj"i
-  / "ku"i
-  / "lo"i
-  / "la"i
-  / "lv"i
-  / "li"i
-  / "ln"i
-  / "lt"i
-  / "lu"i
-  / "lb"i
-  / "mk"i
-  / "mg"i
-  / "ms"i
-  / "ml"i
-  / "mt"i
-  / "gv"i
-  / "mi"i
-  / "mr"i
-  / "mh"i
-  / "mn"i
-  / "na"i
-  / "nv"i
-  / "nd"i
-  / "nr"i
-  / "ng"i
-  / "ne"i
-  / "no"i
-  / "nb"i
-  / "nn"i
-  / "oc"i
-  / "oj"i
-  / "or"i
-  / "om"i
-  / "os"i
-  / "pi"i
-  / "ps"i
-  / "fa"i
-  / "pl"i
-  / "pt"i
-  / "pa"i
-  / "qu"i
-  / "ro"i
-  / "rm"i
-  / "rn"i
-  / "ru"i
-  / "se"i
-  / "sm"i
-  / "sg"i
-  / "sa"i
-  / "sc"i
-  / "sr"i
-  / "sn"i
-  / "sd"i
-  / "si"i
-  / "sk"i
-  / "sl"i
-  / "so"i
-  / "st"i
-  / "es"i
-  / "su"i
-  / "sw"i
-  / "ss"i
-  / "sv"i
-  / "tl"i
-  / "ty"i
-  / "tg"i
-  / "ta"i
-  / "tt"i
-  / "te"i
-  / "th"i
-  / "bo"i
-  / "ti"i
-  / "to"i
-  / "ts"i
-  / "tn"i
-  / "tr"i
-  / "tk"i
-  / "tw"i
-  / "ug"i
-  / "uk"i
-  / "ur"i
-  / "uz"i
-  / "ve"i
-  / "vi"i
-  / "vo"i
-  / "wa"i
-  / "cy"i
-  / "wo"i
-  / "xh"i
-  / "ii"i
-  / "yi"i
-  / "yo"i
-  / "za"i
-  / "zu"i
+language_range
+  = (ALPHA|1..8| ("-" alphanum|1..8|)*)
+  / "*"
 
 iso_3166_1_code
   = "AD"i
@@ -518,12 +337,16 @@ unreserved
 pct_encoded
   = "%" HEXDIG HEXDIG
 
-DIGIT
-  = [\x30-\x39]
-
 ALPHA
   = [\x41-\x5a]
   / [\x61-\x7a]
+
+alphanum
+  = ALPHA
+  / DIGIT
+
+DIGIT
+  = [\x30-\x39]
 
 HEXDIG
   = DIGIT
