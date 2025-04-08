@@ -16,11 +16,11 @@ combo-iso-3166-1-code = ( iso-3166-1-code *( OWS "+" OWS ( iso-3166-1-code) ) )
 
 cookie-name = token
 
-query = 1*( pchar / "/" / "?" )
+query = 1*( pchar )
 
-pchar = unreserved / pct-encoded / ":" / "@" / "*"
+pchar = unreserved / pct-encoded / "*"
 
-unreserved = ALPHA / DIGIT / "-" / "." / "_" / "~"
+unreserved = ALPHA / DIGIT / "-" / "." / "_" / "~" / "+"
 
 pct-encoded = "%" HEXDIG HEXDIG
 

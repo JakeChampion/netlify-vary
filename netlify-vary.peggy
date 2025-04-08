@@ -23,7 +23,7 @@ field_name
   = token
 
 query
-  = (pchar / "/" / "?")+
+  = (pchar)+
 
 cookie_name
   = token
@@ -46,8 +46,6 @@ token
 pchar
   = unreserved
   / pct_encoded
-  / ":"
-  / "@"
   / "*"
 
 iso_639_code
@@ -515,6 +513,7 @@ unreserved
   / "."
   / "_"
   / "~"
+  / "+"
 
 pct_encoded
   = "%" HEXDIG HEXDIG
